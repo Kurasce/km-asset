@@ -24,19 +24,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <header className="h-20 bg-sky-500">
-        <h1>
-          KM AIR SERVICES
-        </h1>
-      </header>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <header className="h-20 bg-sky-500">
+          <h1>
+            KM AIR SERVICES
+          </h1>
+        </header>
 
         {children}
 
+        <Footer />
       </body>
-      <Footer />
     </html>
   );
 }
