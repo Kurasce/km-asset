@@ -27,8 +27,25 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <header className="h-20 bg-sky-500">
+          <h1>
+            KM AIR SERVICES
+          </h1>
+        </header>
+
         {children}
+
+        <Footer />
       </body>
     </html>
   );
 }
+
+
+const Footer = () => (<footer className="fixed w-full bottom-0">
+  {/* <div className="pe-0 border"> */}
+  <div className="text-right bg-amber-200 ">
+    KM AIR SERVICE 2025(c)
+  </div>
+  {/* </div> */}
+</footer>)
