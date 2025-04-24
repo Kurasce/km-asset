@@ -2,8 +2,10 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 
+type SbItems = object[]
 export default function Page() {
-    const [items, set_items] = useState([])
+    const [items, set_items] = useState<SbItems>([])
+
     const [newItem, set_newItem] = useState('')
     const [newItemCode, set_newItemCode] = useState('')
 
@@ -53,12 +55,22 @@ export default function Page() {
                 </button>
             </div>
 
+
+            <ul className="space-y-2">
+                <li className="flex justify-between items-center border-b pb-2 text-blue-700 font-bold text-center">
+                    <span>Item Name</span>
+                    <span>Code</span>
+                    <span>KM ID</span>
+                    <span>Action</span>
+                </li>
+            </ul>
             <ul className="space-y-2">
                 {items.map((item: any) => (
-                    <li key={item.id} className="flex justify-between items-center border-b pb-2">
+                    <li key={item.id} className="flex justify-between items-center border-b pb-2  text-center">
                         <span>{item.name}</span>
                         <span>{item.code}</span>
-                        <button onClick={() => deleteItem(item.id)} className="text-red-500">Delete</button>
+                        <span>{item.km_id}</span>
+                        <button onClick={() => deleteItem(item.id)} className="text-red-500 font-extralight text-xs">Delete</button>
                     </li>
                 ))}
             </ul>
