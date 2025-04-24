@@ -3,13 +3,8 @@ import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 
 // type SbItems = object[]
+import type { KM_ITEM } from '@/lib/km_supabase'
 
-type KM_ITEM = {
-    "id": string,
-    name: string,
-    code: string,
-    km_id: number,
-}
 export default function Page() {
     const [items, set_items] = useState<KM_ITEM[]>([])
 

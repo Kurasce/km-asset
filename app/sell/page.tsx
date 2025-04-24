@@ -2,14 +2,20 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
+import type { KM_ITEM } from '@/lib/km_supabase'
 
 export default function Sell() {
-  const [data, set_data] = useState<object>([]);
+  const [data, set_data] = useState<KM_ITEM[] | []>([]);
 
   const fetchItems = async () => {
     const { data } = await supabase.from("assets").select("*");
     set_data(data || []);
   };
+
+  const deleteItem = async (id: string) => {
+    await supabase.from('assets').delete().eq('id', id)
+    fetchItems()
+  }
 
   useEffect(() => {
     fetchItems();
@@ -21,7 +27,7 @@ export default function Sell() {
         <div className="col-end-1">
           <aside>
             <ul className="space-y-2">
-              {data.map((item: any) => (
+              {data.map((item) => (
                 <li
                   key={item.id}
                   className="flex justify-between items-center border-b pb-2"
