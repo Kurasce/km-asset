@@ -2,9 +2,16 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 
-type SbItems = object[]
+// type SbItems = object[]
+
+type KM_ITEM = {
+    "id": string,
+    name: string,
+    code: string,
+    km_id: number,
+}
 export default function Page() {
-    const [items, set_items] = useState<SbItems>([])
+    const [items, set_items] = useState<KM_ITEM[]>([])
 
     const [newItem, set_newItem] = useState('')
     const [newItemCode, set_newItemCode] = useState('')
@@ -65,7 +72,7 @@ export default function Page() {
                 </li>
             </ul>
             <ul className="space-y-2">
-                {items.map((item: any) => (
+                {items.map((item) => (
                     <li key={item.id} className="flex justify-between items-center border-b pb-2  text-center">
                         <span>{item.name}</span>
                         <span>{item.code}</span>
